@@ -55,7 +55,7 @@ export function randomID(length = 10, type: randomType | randomType[] = ["letter
 				break;
 			case "letter":
 				if (!data.includes("A"))
-					data.push(...NUMBER);
+					data.push(...STRING);
 				
 				break;
 			case "symbol":

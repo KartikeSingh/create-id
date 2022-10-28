@@ -66,7 +66,7 @@ function randomID(length, type) {
                     break;
                 case "letter":
                     if (!data.includes("A"))
-                        data.push.apply(data, NUMBER);
+                        data.push.apply(data, STRING);
                     break;
                 case "symbol":
                     if (!data.includes("!"))
