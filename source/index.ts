@@ -68,7 +68,7 @@ export function randomID(length = 10, type: randomType | randomType[] = ["letter
 			}
 		}
 	}
-    
+	
     return [...randomBytes(length)].reduce((a, b) => a + data[Math.floor(b % data.length)], "");
 }
 
