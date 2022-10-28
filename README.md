@@ -1,21 +1,20 @@
-# Installations
+# Installation
 ```
 npm i create-id
 ```
 
-# What ?
+# What is it?
 An module to create random IDs
 
-# Why ?
+# Why?
 - Fast
 - Customizable
 
-# How ?
+# How do i use it?
 
 ```js
 // Importing for Node JS
-const { randomID } = require('create-id');
-import { randomID } from 'create-id'; // for typescript
+import { randomID } from 'create-id';
 
 // filters
 const length = 18; // length of the id
