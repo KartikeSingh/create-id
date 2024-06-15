@@ -14,7 +14,7 @@ An module to create random IDs
 
 ```js
 // Importing for Node JS
-import { randomId } from 'create-id';
+import { randomId } from 'create-random-id';
 
 // filters
 const length = 18; // length of the id
@@ -26,4 +26,4 @@ const id2 = randomId(length, type);
 ```
 
 # Support
-for support or issues or queries contace me on my [discord server](https://discord.gg/XYnMTQNTFh) or create a issue [here](https://github.com/KartikeSingh/create-id/issues).
+for support or issues or queries contace me on my [discord server](https://discord.gg/J6GmRfgBvE) or create a issue [here](https://github.com/KartikeSingh/create-id/issues).

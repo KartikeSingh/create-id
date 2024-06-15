@@ -1,5 +1,5 @@
 {
-  "name": "create-id",
+  "name": "create-random-id",
   "version": "2.0.0-beta.0",
   "description": "Create random ids.",
   "main": "src/index.js",
