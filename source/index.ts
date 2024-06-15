@@ -1,35 +1,14 @@
-// @ts-ignore
-import { randomBytes } from "node:crypto";
+import { lib } from "crypto-js";
+import { STRING, NUMBER, SYMBOLS } from "./constants";
 
-const STRING = [
-  'Q', 'W', 'E', 'R', 'T', 'Y',
-  'U', 'I', 'O', 'P', 'A', 'S',
-  'D', 'F', 'G', 'H', 'J', 'K',
-  'L', 'Z', 'X', 'C', 'V', 'B',
-  'N', 'M', 
-  'q', 'w', 'e', 'r', 't', 'y',
-  'u', 'i', 'o', 'p', 'a', 's',
-  'd', 'f', 'g', 'h', 'j', 'k',
-  'l', 'z', 'x', 'c', 'v', 'b',
-  'n', 'm'
-];
+export function randomId(length = 10, type: randomType | randomType[] = ["letter", "number"]): string {
+	let data: string[] = [];
 
-const NUMBER = [
-  '0', '1', '2', '3',
-  '4', '5', '6', '7',
-  '8', '9'
-];
+	if (!Array.isArray(type)) {
+		throw new TypeError("Expected a string or an array");
+	}
 
-const SYMBOLS = [
-  '!', '@', '#',
-  '$', '%', '^',
-  '&', '*'
-];
-
-export function randomID(length = 10, type: randomType | randomType[] = ["letter", "number"]): string {
-    let data: string[] = [];
-
-    if (typeof type === "string") {
+	if (typeof type === "string") {
 		switch (type) {
 			case "number":
 				data.push(...NUMBER);
@@ -43,33 +22,33 @@ export function randomID(length = 10, type: randomType | randomType[] = ["letter
 			default:
 				throw new Error("Type should be either 'number' or 'letter', 'symbol' otherwise a array which contains these strings, but we got " + JSON.stringify(type));
 		}
-	} else if (!Array.isArray(type)) {
-		throw new TypeError("Expected a string or an array");
 	} else {
 		for (const t of type) {
 			switch (t) {
-			case "number":
-				if (!data.includes("0"))
-					data.push(...NUMBER);
-				
-				break;
-			case "letter":
-				if (!data.includes("A"))
-					data.push(...STRING);
-				
-				break;
-			case "symbol":
-				if (!data.includes("!"))
-					data.push(...SYMBOLS);
-				
-				break;
-			default:
-				throw new Error(`Array of type should contain string equal to either 'number' or 'letter', 'symbol' but we got ${JSON.stringify(t)}`);
+				case "number":
+					if (!data.includes("0"))
+						data.push(...NUMBER);
+
+					break;
+				case "letter":
+					if (!data.includes("A"))
+						data.push(...STRING);
+
+					break;
+				case "symbol":
+					if (!data.includes("!"))
+						data.push(...SYMBOLS);
+
+					break;
+				default:
+					throw new Error(`Array of type should contain string equal to either 'number' or 'letter', 'symbol' but we got ${JSON.stringify(t)}`);
 			}
 		}
 	}
-	
-    return [...randomBytes(length)].reduce((a, b) => a + data[Math.floor(b % data.length)], "");
+
+	return [...lib.WordArray.random(length * 4).words].reduce((a, b) => a + data[Math.floor(b % data.length)], "");
 }
+
+export default randomId;
 
 type randomType = "letter" | "number" | "symbol";

@@ -14,15 +14,15 @@ An module to create random IDs
 
 ```js
 // Importing for Node JS
-import { randomID } from 'create-id';
+import { randomId } from 'create-id';
 
 // filters
 const length = 18; // length of the id
 const type = "letter" || ["letter", "number","symbol"]; // types of symbol to use for our id
 
 // Create a random ID
-const id = randomID();
-const id2 = randomID(length, type);
+const id = randomId();
+const id2 = randomId(length, type);
 ```
 
 # Support
